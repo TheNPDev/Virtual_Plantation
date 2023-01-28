@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Agora Broadcast</string>
-    <string name="private_app_id"><#Add your App ID Here></string>
+    <string name="app_name">Virtual Plantation</string>
+    <string name="private_app_id">"acc3605f53794be488f72fe3d5e51246"</string>
     <string name="host">Host</string>
     <string name="audience">Audience</string>
     <string name="radiotext">Create a live broadcast or join an existing one</string>
@@ -24,4 +24,11 @@
     <string name="str_friend">Friends name</string>
     <string name="str_channel">Channel name</string>
     <string name="str_account">Account</string>
+    <string-array name="Trees">
+        <item>Neem Tree</item>
+        <item>Banyan Tree</item>
+        <item>Peepal Tree</item>
+        <item>Mahogany Tree</item>
+        <item>Apple Tree</item>
+    </string-array>
 </resources>

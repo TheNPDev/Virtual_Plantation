@@ -34,6 +34,17 @@ public class VideoActivity extends AppCompatActivity {
                 }
             });
         }
+        @Override
+        public void onUserJoined(final int uid, int elapsed) {
+            super.onUserJoined(uid, elapsed);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setupRemoteVideo(uid);
+                    setupLocalVideo();
+                }
+            });
+        }
 
         @Override
         public void onUserOffline(int uid, int reason) {
@@ -115,7 +126,7 @@ public class VideoActivity extends AppCompatActivity {
     }
 
     private void setupRemoteVideo(int uid) {
-        FrameLayout container = (FrameLayout) findViewById(R.id.remote_video_view_container);
+        FrameLayout container =  findViewById(R.id.remote_video_view_container);
 //        if (container.getChildCount() > 1) {
 //            return;
 //        }
@@ -137,11 +148,13 @@ public class VideoActivity extends AppCompatActivity {
         setupVideoProfile();
         setupLocalVideo();
         joinChannel();
+
     }
 
     private void initalizeAgoraEngine() {
         try {
             mRtcEngine = RtcEngine.create(getBaseContext(), getString(R.string.private_app_id), mRtcEventHandler);
+            setupRemoteVideo(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -164,7 +177,9 @@ public class VideoActivity extends AppCompatActivity {
     }
 
     private void joinChannel() {
-        mRtcEngine.joinChannel(null, channelName, "Optional Data", 0);
+        mRtcEngine.joinChannel("007eJxTYDD7IRrlvTxeqHzpXWcbl/z7Fvf/7NC7uuXHjQ9S5TPYr/IrMCQmJxubGZimmRqbW5okpZpYWKSZG6WlGqeYppoaGpmYqXGcTW4IZGRouPmThZEBAkF8VgaPxKLiDAYGAJvrIJc=", channelName, "Optional Data", 0);
+        setupVideoProfile();
+        setupLocalVideo();
     }
 
     private void leaveChannel() {
